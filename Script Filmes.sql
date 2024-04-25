@@ -325,3 +325,110 @@ REFERENCES [dbo].[Generos] ([Id])
 GO
 ALTER TABLE [dbo].[FilmesGenero] CHECK CONSTRAINT [FK__FilmesGen__IdGen__2E1BDC42]
 GO
+
+
+
+              
+              
+              
+              
+              SELECT Nome, 
+				         Ano 
+				    FROM Filmes;
+				    
+				    
+				  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				ORDER BY Ano;
+				
+				
+				
+				  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Nome LIKE '%de volta para o futuro%';
+				   
+				   
+				  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Ano = 1997;
+				   
+				   
+				  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Ano > 2000;
+				   
+				   
+				   
+				   
+				  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Duracao BETWEEN 100 AND 150
+			   ORDER BY Duracao;
+			   
+			   
+			   
+			     SELECT Ano,
+							COUNT(Ano) 
+				    FROM Filmes
+				    GROUP BY Ano;
+				    
+				    SELECT id,
+				           PrimeiroNome,
+				           UltimoNome,
+				           Genero
+				      FROM Atores
+				     WHERE Genero LIKE 'M';
+				     
+				     
+				    SELECT id,
+				           PrimeiroNome,
+				           UltimoNome,
+				           Genero
+				      FROM Atores
+				     WHERE Genero LIKE 'F'
+					  ORDER BY  PrimeiroNome;
+
+					  
+					  SELECT Filmes.Nome,
+					         Genero.Genero
+					    FROM Filmes
+					INNER JOIN FilmesGenero ON idFilme = Filmes.id
+					INNER JOIN Genero ON Genero.Id = FilmesGenero.idGenero;
+					
+					
+					SELECT Filmes.Nome,
+					         Genero.Genero
+					    FROM Filmes
+					INNER JOIN FilmesGenero ON idFilme = Filmes.id
+					INNER JOIN Genero ON Genero.Id = FilmesGenero.idGenero
+					  WHERE Genero.Genero LIKE 'Mistério';
+					
+
+					SELECT Filmes.Nome,
+					       Atores.PrimeiroNome,
+					       Atores.UltimoNome,
+					       ElencoFilme.Papel
+					    FROM Filmes
+					INNER JOIN ElencoFilme ON ElencoFilme.idFilme = Filmes.id
+					INNER JOIN Atores ON Atores.Id = ElencoFilme.IdAtor;
+					 
+				    
+				  
+
+				   
+				   
+				   
+				   
+				    
+				   
+				   
