@@ -43,49 +43,106 @@ Você deverá executar o arquivo **Script Filmes.sql** em seu banco de dados SQL
 Você deverá criar diversas consultas, com o objetivo de retornar os dados a seguir. Abaixo de cada pedido tem o retorno esperado. O seu retorno deve ser igual ao da imagem.
 
 ## 1 - Buscar o nome e ano dos filmes
-
+  SELECT Nome, 
+				         Ano 
+				    FROM Filmes;
 ![Exercicio 1](Imagens/1.png)
 
 ## 2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
-
+ SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				ORDER BY Ano;
 ![Exercicio 2](Imagens/2.png)
 
 ## 3 - Buscar pelo filme de volta para o futuro, trazendo o nome, ano e a duração
-
+  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Nome LIKE '%de volta para o futuro%';
 ![Exercicio 3](Imagens/3.png)
 
 ## 4 - Buscar os filmes lançados em 1997
-
+	  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Ano = 1997;
 ![Exercicio 4](Imagens/4.png)
 
 ## 5 - Buscar os filmes lançados APÓS o ano 2000
-
+	  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Ano > 2000;
 ![Exercicio 5](Imagens/5.png)
 
 ## 6 - Buscar os filmes com a duracao maior que 100 e menor que 150, ordenando pela duracao em ordem crescente
-
+	   
+				  SELECT Nome, 
+				         Ano,
+							Duracao 
+				    FROM Filmes
+				   WHERE Duracao BETWEEN 100 AND 150
+			   ORDER BY Duracao;
+			   
 ![Exercicio 6](Imagens/6.png)
 
 ## 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
-
+  SELECT Ano,
+							COUNT(Ano) 
+				    FROM Filmes
+				    GROUP BY Ano;
 ![Exercicio 7](Imagens/7.png)
 
 ## 8 - Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
-
+    
+				    SELECT id,
+				           PrimeiroNome,
+				           UltimoNome,
+				           Genero
+				      FROM Atores
+				     WHERE Genero LIKE 'M';
+				     
 ![Exercicio 8](Imagens/8.png)
 
 ## 9 - Buscar os Atores do gênero feminino, retornando o PrimeiroNome, UltimoNome, e ordenando pelo PrimeiroNome
-
+  SELECT id,
+				           PrimeiroNome,
+				           UltimoNome,
+				           Genero
+				      FROM Atores
+				     WHERE Genero LIKE 'F'
+					  ORDER BY  PrimeiroNome;
 ![Exercicio 9](Imagens/9.png)
 
 ## 10 - Buscar o nome do filme e o gênero
-
+	  SELECT Filmes.Nome,
+					         Genero.Genero
+					    FROM Filmes
+					INNER JOIN FilmesGenero ON idFilme = Filmes.id
+					INNER JOIN Genero ON Genero.Id = FilmesGenero.idGenero;
+					
 ![Exercicio 10](Imagens/10.png)
 
 ## 11 - Buscar o nome do filme e o gênero do tipo "Mistério"
-
+		SELECT Filmes.Nome,
+					         Genero.Genero
+					    FROM Filmes
+					INNER JOIN FilmesGenero ON idFilme = Filmes.id
+					INNER JOIN Genero ON Genero.Id = FilmesGenero.idGenero
+					  WHERE Genero.Genero LIKE 'Mistério';
 ![Exercicio 11](Imagens/11.png)
 
 ## 12 - Buscar o nome do filme e os atores, trazendo o PrimeiroNome, UltimoNome e seu Papel
-
+		SELECT Filmes.Nome,
+					       Atores.PrimeiroNome,
+					       Atores.UltimoNome,
+					       ElencoFilme.Papel
+					    FROM Filmes
+					INNER JOIN ElencoFilme ON ElencoFilme.idFilme = Filmes.id
+					INNER JOIN Atores ON Atores.Id = ElencoFilme.IdAtor;
 ![Exercicio 12](Imagens/12.png)
